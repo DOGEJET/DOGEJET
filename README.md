@@ -1,16 +1,33 @@
 ## Hi there 👋
 
-<!--
-**DOGEJET/DOGEJET** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# 🐶 DogeJet
 
-Here are some ideas to get you started:
+A solo-built web game inspired by **Pieter Levels**.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+DogeJet is a fast, lightweight, and mobile-first game where users fly through viral environments, earn rewards, and experience simple but addictive loops — all from the browser.
+
+---
+
+## 🚀 Features
+
+- ⚙️ **Built with:** Next.js + Supabase  
+- 🧠 **Inspired by:** Pieter Levels' indie hacker philosophy  
+- 💸 **Monetization-ready:** Ads or token rewards  
+- 📱 **Optimized for:** Mobile-first usage  
+- 🎮 **Gameplay:** Simple mechanics, tight loops  
+- 🌍 **Web-native:** No installs, no bloat
+
+---
+
+## 🌐 Try it live
+
+👉 [Play DogeJet](https://your-live-link.com) ← *(Replace this with your actual URL)*
+
+---
+
+## 👀 Future plans
+
+- [ ] NFT or token-based reward system  
+- [ ] Global leaderboard  
+- [ ] User-generated skins or levels  
+- [ ] Progressive web app (PWA) support  
