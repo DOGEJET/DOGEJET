@@ -52,7 +52,7 @@ npm install
 npm run dev
 ```
 
-Open: [http://localhost:3000](http://localhost:3000)
+Open: (https://dogejet.vercel.app/)
 
 ### Core Files
 
@@ -85,7 +85,7 @@ Open: [http://localhost:3000](http://localhost:3000)
 
 ## 🌐 Play Now
 
-👉 **[Live Demo (Coming Soon)](https://your-game-url.com)**  
+👉 **[Live Demo [(https://dogejet.vercel.app/))**  
 *(Replace with your actual domain)*
 
 ## 🧠 Tech Stack
