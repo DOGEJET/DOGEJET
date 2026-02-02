@@ -55,7 +55,7 @@ export default function Home() {
   const loadedModelRef = useRef(null)
   const [hud, setHud] = useState({ speed: 0, distance: 0, stage: 0, booster: 100 })
   const [minimapZoom, setMinimapZoom] = useState(1)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [gameState, setGameState] = useState({ 
     health: 100, 
     shield: 0, 
@@ -92,6 +92,28 @@ export default function Home() {
   }
 
   useEffect(() => {
+    // 7초 후 로딩 종료 타이머
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, 7000)
+
+    // 8초 동안 게이지 증가 애니메이션
+    const startTime = Date.now()
+    const updateLoadingBar = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(1, elapsed / 8000)
+      
+      const loadingBar = document.querySelector('.loading-bar-fill')
+      if (loadingBar) {
+        loadingBar.style.width = `${progress * 100}%`
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateLoadingBar)
+      }
+    }
+    updateLoadingBar()
+
     const scene = new THREE.Scene()
     scene.background = new THREE.Color(0x050510)
     scene.fog = new THREE.FogExp2(0x050510, 0.0008)
@@ -756,8 +778,16 @@ export default function Home() {
     const cameraDelta = new THREE.Vector3()
 
     const animate = () => {
-      requestAnimationFrame(animate)
-      frameCount++
+  requestAnimationFrame(animate)
+
+  // ⭐ GLB 로드 전 프레임 스킵 (새로 추가)
+  if (!loadedModelRef.current) {
+    renderer.render(scene, camera)
+    return
+  }
+
+  frameCount++
+
 
         
         
@@ -1144,8 +1174,36 @@ export default function Home() {
       `}</style>
       
       {isLoading && (
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', fontSize: 18, zIndex: 200 }}>
-          🚀 로켓 로딩 중...
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'linear-gradient(135deg, rgba(10, 20, 40, 0.95) 0%, rgba(5, 10, 25, 0.98) 100%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 200,
+          backdropFilter: 'blur(4px)'
+        }}>
+          <div style={{ marginBottom: 20, fontSize: 32 }}>🚀</div>
+          <div style={{ fontSize: 20, color: '#66ff66', textShadow: '0 0 10px rgba(102, 255, 102, 0.5)' }}>
+            DOGEJET Loading...
+          </div>
+          <div style={{ 
+            marginTop: 20, 
+            width: 200, 
+            height: 6, 
+            background: 'rgba(100, 150, 255, 0.3)', 
+            borderRadius: 3,
+            overflow: 'hidden'
+          }}>
+            <div className="loading-bar-fill" style={{ 
+              width: '0%', 
+              height: '100%', 
+              background: 'linear-gradient(90deg, #ff6600, #ffcc00)', 
+              transition: 'width 0.1s linear'
+            }} />
+          </div>
         </div>
       )}
 
